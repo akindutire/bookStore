@@ -1,0 +1,68 @@
+
+  <div class="row">
+    
+    <div class="col-md-12 col-sm-12 my-1">
+      <div class="container">
+
+          <div *ngIf="!loaded else bookView" class="card" style="width: 100% !important;">
+              <div class="card-body" [ngStyle]="{'font-size': '14px', 'padding': '1.1rem'}">
+                <div class="card-text ">Loading...</div>
+                <div class="card-text text-danger">{{ error }}</div>
+              </div>
+          </div>
+
+
+          <ng-template #bookView>
+              <div class="row pl-2">
+                  <h2 class="display-4 mb-3">Books <span style="color: red;">{{error}}</span></h2>
+                </div>
+        
+                <div class="row my-3">
+                  <div class="container">
+                    <a href="#" [routerLink]="'/book/add'" class="col btn btn-primary col-md-2">Add</a>
+                  </div>
+                </div>
+        
+                <div class="row pl-2">
+                  <div class="col-lg-4 col-md-6 col-sm-12" style="width: 1px solid red;" *ngFor="let book of books">
+        
+                    <div class="m-1" #indProduct>
+                      <div class="card" style="width: 100% !important;">
+                        <div class="card-body" [ngStyle]="{'padding': '1.1rem'}">
+                          <div class="card-title">
+                            <div class="mb-2 row">
+                              <div class="col">
+                                
+                                <span style="font-style: bold;"><b>ISBN</b>: {{ book.isbn }}</span>
+                              </div>
+                    
+                            </div>
+                    
+                          </div>
+                    
+                         
+                          <div class="card-text text-truncate"><b>Title</b>: {{ book.title }}</div>
+                          <div class="card-text text-truncate"><b>Author</b>: {{ book.author }}</div>
+                          
+                          <div class="row mt-3">
+                            <div class="col">
+                              <a [routerLink]="'/book/view/'+book.id" class="btn btn-sm btn-block btn-dark" [ngStyle]="{}">View</a>
+                            </div>
+                          </div>
+        
+                        </div>
+                      </div>
+                    
+                    
+                    </div>
+                    
+                  </div>
+                </div>
+          </ng-template>
+
+       
+
+      </div>
+
+    </div>
+  </div>

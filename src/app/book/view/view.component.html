@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="container">
+
+    <div *ngIf="!loaded else bookView" class="card" style="width: 100% !important;">
+          <div class="card-body" [ngStyle]="{'font-size': '14px', 'padding': '1.1rem'}">
+            <div class="card-text ">Loading...</div>
+            <div class="card-text text-danger">{{ error }}</div>
+          </div>
+    </div>
+
+
+    <ng-template #bookView>
+
+      <div class="row my-3">
+        <div class="container">
+          <a href="#" [routerLink]="'/book/edit/'+id" class="col btn btn-primary col-md-2 mr-2">Edit</a>
+          <button href="button" (click)="remove()" #deleteBtn class="col btn btn-danger col-md-2">Delete</button>
+        </div>
+      </div>
+
+      <div class="card" style="width: 100% !important;">
+          <div class="card-body" [ngStyle]="{'font-size': '14px', 'padding': '1.1rem'}">
+            <div class="card-title">
+              <div class="mb-2 row">
+                <div class="col">
+                  
+                  <span style="font-style: bold;"><b>ISBN</b>: {{ book.isbn }}</span>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="card-text "><b>Title</b>: {{ book.title }}</div>
+            <div class="card-text"><b>Author</b>: {{ book.author }}</div>
+            
+          </div>
+        </div>
+    </ng-template>
+
+    
+  </div>
+</div>
+
+
+
+

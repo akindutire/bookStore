@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="container">
+
+    <div *ngIf="!loaded else bookView" class="card" style="width: 100% !important;">
+          <div class="card-body" [ngStyle]="{'font-size': '14px', 'padding': '1.1rem'}">
+            <div class="card-text ">Loading...</div>
+            <div class="card-text text-danger">{{ error }}</div>
+          </div>
+    </div>
+
+    <ng-template #bookView>
+      <div class="col-md-6 offset-md-3">
+
+        <form action="" method="post">
+
+          <div class="form-group">
+            <label for="">Title</label>
+            <input type="text" #name class="form-control" [value]="book.title">
+          </div>
+
+          <div class="form-group">
+            <label for="">Author</label>
+            <input type="text" #author class="form-control" [value]="book.author">
+          </div>
+
+          <div class="form-group">
+            <label for="">ISBN</label>
+            <input type="text" #isbn class="form-control" [value]="book.isbn">
+          </div>
+
+          <div class="form-group">
+            <label for="">Genre</label>
+            <input type="text" #genre class="form-control" [value]="book.genre">
+          </div>
+
+          <div class="form-group">
+            <label for="">Description</label>
+            <input type="text" #desc class="form-control" [value]="book.description">
+          </div>
+
+          <button type="button" class="btn btn-block btn-dark" (click)="edit(name, author, isbn, desc, genre)">Edit</button>
+        </form>
+
+      </div>
+
+    </ng-template>
+  
+  </div>
+</div>
